@@ -46,16 +46,15 @@ Um sistema desktop em Java para gerenciamento de salões de beleza, com suporte 
 - **JDBC**
 - **MySQL (XAMPP)**
 - **Swing**
-- **Maven/Manual Setup** (sem frameworks externos)
 
 ---
 
 ## 🚀 Como Executar
 
 1. Instale o [XAMPP](https://www.apachefriends.org/) e inicie o MySQL.
-2. Crie o banco de dados com o script SQL disponível [aqui](#).
+2. Crie o banco de dados.
 3. Configure a URL de conexão no arquivo `ConnectionFactory.java`:
    ```java
-   String url = "jdbc:mysql://localhost:3306/salao_beleza";
+   String url = "jdbc:mysql://localhost:3306/salaodebeleza";
    String user = "root";
    String password = "";
