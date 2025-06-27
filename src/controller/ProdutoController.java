@@ -1,16 +1,16 @@
 package controller;
 
-import model.dao.ProdutoDAO;
 import model.entities.Produto;
-
-import java.math.BigDecimal;
+import model.dao.ProdutoDAO;
 import java.sql.SQLException;
 import java.util.List;
+import java.math.BigDecimal;
 
 public class ProdutoController {
-    private ProdutoDAO produtoDAO = new ProdutoDAO();
+    private static ProdutoDAO produtoDAO = new ProdutoDAO();
 
-    public static void listarProdutos() {
+    public static List<Produto> listarProdutos() throws SQLException {
+        return produtoDAO.listarTodos(); // ou o método correto do seu DAO
     }
 
     public static void cadastrarViaPrompt() {

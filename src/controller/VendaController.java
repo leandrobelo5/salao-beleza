@@ -11,11 +11,15 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class VendaController {
-    private VendaDAO vendaDAO = new VendaDAO();
+    private static VendaDAO vendaDAO = new VendaDAO();
     private ProdutoDAO produtoDAO = new ProdutoDAO();
 
-    public static void listarVendas() {
-        // implementação existente
+    public static List<Venda> listarVendas() throws SQLException {
+        return vendaDAO.listarTodas(); // ou o método que retorna List<Venda>
+    }
+
+    public List<Venda> listarVendasPorCliente(int clienteId) throws SQLException {
+        return vendaDAO.listarPorCliente(clienteId); // Certifique-se de que esse método exista no seu VendaDAO
     }
 
     public void registrarVenda(Integer clienteId, int funcionarioId, List<ItemVenda> itens) throws SQLException {

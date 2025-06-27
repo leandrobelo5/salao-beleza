@@ -73,7 +73,15 @@ public class MenuPrincipal {
                 opcoes[0]);
 
         switch (escolha) {
-            case 1 -> VendaController.listarVendas();
+            case 1 -> {
+                try {
+                    // chamada que pode lançar SQLException, por exemplo:
+                    VendaController.listarVendas();
+                    // ...restante do código...
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao acessar o banco de dados: " + ex.getMessage());
+                }
+            }
             default -> {} // Voltar
         }
     }

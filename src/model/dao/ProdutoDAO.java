@@ -65,4 +65,28 @@ public class ProdutoDAO {
         }
         throw new SQLException("Produto não encontrado com ID: " + id);
     }
+
+    public List<Produto> listarTodos() throws SQLException {
+        String sql = "SELECT * FROM produtos";
+        List<Produto> produtos = new ArrayList<>();
+
+        try (Connection conn = ConexaoDAO.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setPreco(rs.getBigDecimal("preco"));
+                produto.setQuantidadeEstoque(rs.getInt("quantidade_estoque"));
+                if (rs.getString("categoria") != null) {
+                    produto.setCategoria(rs.getString("categoria"));
+                }
+                produtos.add(produto);
+            }
+        }
+
+        return produtos;
+    }
 }
